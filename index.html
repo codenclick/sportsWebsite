@@ -101,7 +101,8 @@
             position: fixed;
             top: 15px;
             right: 15px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            /* background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); */
+             background: #fcfafa;
             color: var(--forest-dark);
             border: none;
             width: 50px;
@@ -327,24 +328,39 @@
             top: 0;
             width: 100%;
             height: 100%;
-            display: none;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
+            padding: 0 15px;
             pointer-events: none;
             overflow: hidden;
+            transform: translateY(45px);
         }
 
         @media (min-width: 768px) {
             .header-icons {
-                display: flex;
+                padding: 0 40px;
             }
         }
 
         .icon-left, .icon-right {
             display: flex;
-            gap: 30px;
-            opacity: 0.3;
+            gap: 12px;
+            opacity: 0.25;
+        }
+
+        @media (min-width: 480px) {
+            .icon-left, .icon-right {
+                gap: 20px;
+                opacity: 0.28;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .icon-left, .icon-right {
+                gap: 30px;
+                opacity: 0.3;
+            }
         }
 
         .icon-left {
@@ -356,9 +372,21 @@
         }
 
         .header-sport-icon {
-            font-size: 4rem;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            font-size: 2rem;
             animation: float 3s ease-in-out infinite;
+        }
+
+        @media (min-width: 480px) {
+            .header-sport-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header-sport-icon {
+                font-size: 4rem;
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            }
         }
 
         .header-sport-icon:nth-child(1) {
@@ -704,6 +732,75 @@
         .prize-value {
             color: var(--gold-dark);
             font-weight: 600;
+        }
+
+        /* ============ TABLE CAPTION ============ */
+        caption {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--navy-dark);
+            padding: 12px 0;
+            text-align: left;
+            caption-side: top;
+        }
+
+        caption strong {
+            font-weight: 700;
+            color: var(--forest-dark);
+        }
+
+        /* ============ PRIZE NOTES ============ */
+        .prize-notes-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0 60px 0;
+            box-shadow: 0 4px 15px rgba(27, 58, 46, 0.08);
+            border-left: 4px solid var(--gold);
+        }
+
+        .prize-notes-container h3 {
+            color: var(--navy-dark);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .prize-notes-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .prize-notes-table thead {
+            background: rgba(212, 175, 55, 0.1);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .prize-notes-table th {
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--gold-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .prize-notes-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(15, 30, 61, 0.05);
+            color: var(--text-dark);
+        }
+
+        .prize-notes-table tbody tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .prize-icon {
+            font-size: 1.8rem;
+            text-align: center;
+            width: 50px;
         }
 
         /* ============ CHARTS & INFOGRAPHICS ============ */
@@ -1152,6 +1249,38 @@
                 border-collapse: collapse;
             }
 
+            caption {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+
+            .prize-notes-container {
+                padding: 15px;
+                margin: 25px 0 40px 0;
+            }
+
+            .prize-notes-container h3 {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .prize-notes-table {
+                font-size: 0.8rem;
+            }
+
+            .prize-notes-table th {
+                padding: 8px 10px;
+                font-size: 0.75rem;
+            }
+
+            .prize-notes-table td {
+                padding: 8px 10px;
+            }
+
+            .prize-icon {
+                font-size: 1.4rem;
+            }
+
             table thead {
                 background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             }
@@ -1329,6 +1458,38 @@
                 font-size: 0.8rem;
             }
 
+            caption {
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+
+            .prize-notes-container {
+                padding: 20px;
+                margin: 30px 0 50px 0;
+            }
+
+            .prize-notes-container h3 {
+                font-size: 1.1rem;
+                margin-bottom: 18px;
+            }
+
+            .prize-notes-table {
+                font-size: 0.9rem;
+            }
+
+            .prize-notes-table th {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .prize-notes-table td {
+                padding: 10px 12px;
+            }
+
+            .prize-icon {
+                font-size: 1.6rem;
+            }
+
             table th, table td {
                 padding: 10px;
             }
@@ -1485,7 +1646,7 @@
             <li><a href="#special-events" onclick="toggleMobileMenu()">🎉 Special Events</a></li>
             <li><a href="#volleyball" onclick="toggleMobileMenu()">🏐 Volleyball</a></li>
             <li><a href="#rules" onclick="toggleMobileMenu()">📋 Rules</a></li>
-            <li><a href="#contact" onclick="toggleMobileMenu()">📞 Contact</a></li>
+            <!-- <li><a href="#contact" onclick="toggleMobileMenu()">📞 Contact</a></li> -->
             <!-- <li><a href="javascript:void(0)" onclick="exportToPDF(); toggleMobileMenu()">📥 Download PDF</a></li> -->
         </ul>
     </div>
@@ -1498,7 +1659,7 @@
             <li><a href="#special-events">Special Events</a></li>
             <li><a href="#volleyball">Volleyball</a></li>
             <li><a href="#rules">Rules</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <!-- <li><a href="#contact">Contact</a></li> -->
         </ul>
     </nav>
 
@@ -1532,22 +1693,22 @@
         <div class="event-info">
             <div class="info-card">
                 <i class="ti ti-calendar"></i>
-                <div class="info-card-label">Event Date</div>
+                <div class="info-card-label">📅 Event Date</div>
                 <div class="info-card-value">November 1st, 2026</div>
             </div>
             <div class="info-card">
                 <i class="ti ti-map-pin"></i>
-                <div class="info-card-label">Location</div>
+                <div class="info-card-label">📍 Location</div>
                 <div class="info-card-value">Mohdinpur, Rewari</div>
             </div>
             <div class="info-card">
                 <i class="ti ti-phone"></i>
-                <div class="info-card-label">Contact</div>
+                <div class="info-card-label">📞 Contact</div>
                 <div class="info-card-value"><a href="tel:+918882912305">+91 8882912305 / 9817526751</a></div>
             </div>
             <div class="info-card">
                 <i class="ti ti-building"></i>
-                <div class="info-card-label">Organizer</div>
+                <div class="info-card-label">🤵 Organizer</div>
                 <div class="info-card-value">Yuva Sports Club</div>
             </div>
         </div>
@@ -1574,19 +1735,19 @@
                         <td>100M Race</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                     <tr>
                         <td>400M Race</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                     <tr>
                         <td>1,600M Race</td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                 </tbody>
             </table>
@@ -1614,7 +1775,7 @@
                         <td>High Jump</td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                     <tr>
                         <td style="display: flex; align-items: center; gap: 10px;">
@@ -1623,13 +1784,13 @@
                         </td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                     <tr>
                         <td>Shot Put</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>Sando</td>
+                        <td>🎽Sando</td>
                     </tr>
                 </tbody>
             </table>
@@ -1723,7 +1884,7 @@
                     <div class="prizes-container">
                         <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
                         <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>🎽Sando*</span>
                     </div>
                 </div>
             </div>
@@ -1755,7 +1916,7 @@
                     <div class="prizes-container">
                         <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
                         <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>🎽Sando*</span>
                     </div>
                 </div>
             </div>
@@ -1823,7 +1984,7 @@
                     <div class="prizes-container">
                         <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
                         <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>🎽Sando*</span>
                     </div>
                 </div>
             </div>
@@ -1859,8 +2020,8 @@
                     Ladies Special Event<br><br>
                     <strong>Prize Distribution</strong>
                     <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹1100</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹500</span>
                         <span class="prize-badge"><span class="badge-medal">🥉</span>Shawl</span>
                     </div>
                 </div>
@@ -1911,9 +2072,9 @@
         </div>
 
         <div class="table-container">
-            <h3>Main Tournament - Prize Pool: ₹18,400</h3>
+            <!-- <h3>Main Tournament </h3> -->
             <table>
-                <caption>Volleyball Tournament Prize Distribution - Entry: ₹200/team</caption>
+                <caption>Volleyball Tournament Prize Distribution - <strong>Entry: ₹200/team</strong></caption>
                 <thead>
                     <tr>
                         <th scope="col">Position</th>
@@ -1941,11 +2102,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-            <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
-                <strong>Prize Notes:</strong> Sando = Sandwich/Gift Item | Lohi = Traditional Prize | SHAWL = Fabric Shawl
-            </p>
-        </div>
+
 
 
 
@@ -1982,6 +2139,40 @@
                     <li><strong>Safety First:</strong> Warm-up and safety guidelines must be followed</li>
                 </ul>
             </div>
+        </div>
+
+
+        </div>
+
+        <!-- PRIZE NOTES TABLE -->
+        <div class="prize-notes-container">
+            <h3>Prize Notes & Terminology</h3>
+            <table class="prize-notes-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Icon</th>
+                        <th scope="col">Prize Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="prize-icon">🎽</td>
+                        <td><strong>Sando</strong></td>
+                        <td>Sando for Runners - Men </td>
+                    </tr>
+                    <tr>
+                        <td class="prize-icon">🧣</td>
+                        <td><strong>Lohi</strong></td>
+                        <td>Traditional Men's woolen shawl</td>
+                    </tr>
+                    <tr>
+                        <td class="prize-icon">🧥</td>
+                        <td><strong>Shawl</strong></td>
+                        <td>Traditional Women's woolen shawl</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- CONTACT SECTION -->
