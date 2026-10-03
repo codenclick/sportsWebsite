@@ -521,6 +521,74 @@
             box-shadow: 0 12px 35px rgba(27, 58, 46, 0.15);
         }
 
+        /* ============ CATEGORIES GRID ============ */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .categories-grid .event-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+
+        /* Category-specific color accents */
+        .category-senior {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(27, 58, 46, 0.04) 100%);
+            border-left-color: #d4af37;
+        }
+
+        .category-women {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(232, 235, 229, 0.05) 100%);
+            border-left-color: #d4af37;
+        }
+
+        .category-kids {
+            background: linear-gradient(135deg, rgba(42, 77, 63, 0.06) 0%, rgba(61, 97, 80, 0.04) 100%);
+            border-left-color: #2a4d3f;
+        }
+
+        .category-teens {
+            background: linear-gradient(135deg, rgba(61, 97, 80, 0.08) 0%, rgba(27, 58, 46, 0.04) 100%);
+            border-left-color: #3d6150;
+        }
+
+        .category-girls {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(224, 193, 105, 0.05) 100%);
+            border-left-color: #e0c169;
+        }
+
+        .category-fun {
+            background: linear-gradient(135deg, rgba(138, 109, 18, 0.08) 0%, rgba(212, 175, 55, 0.06) 100%);
+            border-left-color: #8a6d12;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--forest-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .prizes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
         .event-icon {
             width: 50px;
             height: 50px;
@@ -532,6 +600,13 @@
             margin-bottom: 15px;
             font-size: 1.6rem;
             color: var(--forest-dark);
+        }
+
+        .svg-icon {
+            width: 100%;
+            height: 100%;
+            color: var(--forest-dark);
+            stroke: none;
         }
 
         .event-card h3 {
@@ -653,19 +728,45 @@
         }
 
         /* ============ RULES SECTION ============ */
+        .rules-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
         .rules-container {
             background: white;
             border-radius: 12px;
             padding: 30px;
-            margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(27, 58, 46, 0.08);
             border-left: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .rules-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(27, 58, 46, 0.12);
+        }
+
+        .rules-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .rules-icon {
+            font-size: 1.8rem;
+            display: inline-block;
         }
 
         .rules-container h3 {
             color: var(--navy-dark);
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            margin: 0;
             font-weight: 600;
         }
 
@@ -833,6 +934,7 @@
             }
         }
 
+
         /* ============ PRINT STYLESHEET ============ */
         @media print {
             nav {
@@ -986,6 +1088,22 @@
                 border-left: 4px solid var(--gold);
             }
 
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 30px;
+                margin-bottom: 40px;
+            }
+
+            .categories-grid .event-card {
+                padding: 12px;
+            }
+
+            .category-badge {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+
             .event-icon {
                 font-size: 2.5rem;
                 margin-bottom: 10px;
@@ -1067,9 +1185,24 @@
                 font-size: 1.3rem;
             }
 
+            .rules-wrapper {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+
             .rules-container {
                 padding: 15px;
+            }
+
+            .rules-header {
+                gap: 8px;
                 margin-bottom: 15px;
+                padding-bottom: 10px;
+            }
+
+            .rules-icon {
+                font-size: 1.4rem;
             }
 
             .rules-container h3 {
@@ -1162,6 +1295,17 @@
                 font-size: 1.15rem;
             }
 
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+                margin-top: 35px;
+                margin-bottom: 50px;
+            }
+
+            .categories-grid .event-card {
+                padding: 18px;
+            }
+
             .event-details {
                 font-size: 0.9rem;
             }
@@ -1203,9 +1347,23 @@
                 font-size: 1.5rem;
             }
 
+            .rules-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                margin-bottom: 50px;
+            }
+
             .rules-container {
                 padding: 18px;
-                margin-bottom: 20px;
+            }
+
+            .rules-header {
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+
+            .rules-icon {
+                font-size: 1.6rem;
             }
 
             .rules-list li {
@@ -1297,6 +1455,17 @@
             .contact-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+                margin-top: 45px;
+                margin-bottom: 70px;
+            }
+
+            .categories-grid .event-card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -1317,7 +1486,7 @@
             <li><a href="#volleyball" onclick="toggleMobileMenu()">🏐 Volleyball</a></li>
             <li><a href="#rules" onclick="toggleMobileMenu()">📋 Rules</a></li>
             <li><a href="#contact" onclick="toggleMobileMenu()">📞 Contact</a></li>
-            <li><a href="javascript:void(0)" onclick="exportToPDF(); toggleMobileMenu()">📥 Download PDF</a></li>
+            <!-- <li><a href="javascript:void(0)" onclick="exportToPDF(); toggleMobileMenu()">📥 Download PDF</a></li> -->
         </ul>
     </div>
 
@@ -1334,9 +1503,9 @@
     </nav>
 
     <!-- PDF EXPORT BUTTON -->
-    <button class="pdf-export-btn" onclick="exportToPDF()" title="Download tournament details as PDF">
-        📥 Download PDF
-    </button>
+    <!-- <button class="pdf-export-btn" onclick="exportToPDF()" title="Download tournament details as PDF"> -->
+        <!-- 📥 Download PDF -->
+    <!-- </button> -->
 
     <div class="container">
         <!-- HEADER -->
@@ -1353,18 +1522,18 @@
                     <span class="header-sport-icon">🏆</span>
                 </div>
             </div>
-            <h1>Mohdinpur Athletes & Volleyball Tournament 2026</h1>
-            <p class="tagline">Celebrating Athletic Excellence • November 1, 2026</p>
-            <p class="event-date">🏆 Rewari, Haryana • ₹50,000+ Prize Pool</p>
-            <a href="https://wa.me/918882912305?text=I%20want%20to%20register%20for%20the%20Mohdinpur%20Tournament" class="cta-button" style="margin-top: 20px;">Register Now</a>
+            <h1>Mohdinpur Athletics & Volleyball Tournament 2026</h1>
+            <p class="tagline">📅 November 1st, 2026</p>
+            <p class="event-date">📍  Mohdinpur, Rewari, Haryana</p>
         </header>
+
 
         <!-- EVENT INFO -->
         <div class="event-info">
             <div class="info-card">
                 <i class="ti ti-calendar"></i>
                 <div class="info-card-label">Event Date</div>
-                <div class="info-card-value">November 1, 2026</div>
+                <div class="info-card-value">November 1st, 2026</div>
             </div>
             <div class="info-card">
                 <i class="ti ti-map-pin"></i>
@@ -1374,7 +1543,7 @@
             <div class="info-card">
                 <i class="ti ti-phone"></i>
                 <div class="info-card-label">Contact</div>
-                <div class="info-card-value"><a href="tel:+918882912305">8882912305</a></div>
+                <div class="info-card-value"><a href="tel:+918882912305">+91 8882912305 / 9817526751</a></div>
             </div>
             <div class="info-card">
                 <i class="ti ti-building"></i>
@@ -1391,7 +1560,7 @@
         <div class="table-container">
             <h3>Open Category - Sprint & Distance Races</h3>
             <table>
-                <caption>Open Category - Sprint & Distance Races Prize Distribution</caption>
+                <!-- <caption>Open Category - Sprint & Distance Races Prize Distribution</caption> -->
                 <thead>
                     <tr>
                         <th scope="col">Event</th>
@@ -1405,139 +1574,25 @@
                         <td>100M Race</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                     <tr>
                         <td>400M Race</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                     <tr>
                         <td>1,600M Race</td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="events-grid">
-            <div class="event-card">
-                <div class="event-icon">
-                    👴
-                </div>
-                <h3>Senior Category</h3>
-                <div class="event-details">
-                    Age 50+ Years<br><br>
-                    <strong>100M Race</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹1,100</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>Lohi*</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    👩
-                </div>
-                <h3>Ladies Race</h3>
-                <div class="event-details">
-                    Women's Division<br><br>
-                    <strong>100M Race</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹1,100</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>Shawl</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    👧
-                </div>
-                <h3>Kids Under-10</h3>
-                <div class="event-details">
-                    Children's Sprint<br><br>
-                    <strong>100M & 400M</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>SANDO*</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    🏃
-                </div>
-                <h3>Kids Under-12</h3>
-                <div class="event-details">
-                    Youth Division<br><br>
-                    <strong>100M & 400M</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>SANDO*</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    💨
-                </div>
-                <h3>Kids Under-14</h3>
-                <div class="event-details">
-                    Teen Division<br><br>
-                    <strong>100M & 400M</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>SANDO*</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    👯
-                </div>
-                <h3>Girls Under-14</h3>
-                <div class="event-details">
-                    Girls Division<br><br>
-                    <strong>100M Race</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>T-Shirt</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-icon">
-                    🎉
-                </div>
-                <h3>Lemon Race</h3>
-                <div class="event-details">
-                    Fun Event (Under-10)<br><br>
-                    <strong>Special Format</strong>
-                    <div style="margin-top: 8px;">
-                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
-                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
-                        <span class="prize-badge"><span class="badge-medal">🥉</span>SANDO*</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FIELD EVENTS -->
+                <!-- FIELD EVENTS -->
         <div class="section-header" id="field-events">
             <h2>Field Events</h2>
         </div>
@@ -1545,7 +1600,7 @@
         <div class="table-container">
             <h3>Jumping & Throwing Competitions</h3>
             <table>
-                <caption>Field Events Prize Distribution</caption>
+                <!-- <caption>Field Events Prize Distribution</caption> -->
                 <thead>
                     <tr>
                         <th scope="col">Event</th>
@@ -1559,23 +1614,222 @@
                         <td>High Jump</td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                     <tr>
-                        <td>Long Jump</td>
+                        <td style="display: flex; align-items: center; gap: 10px;">
+                            <!-- <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden"><defs><clipPath id="clip0"><rect x="51" y="198" width="218" height="218"/></clipPath><clipPath id="clip1"><rect x="0" y="0" width="2057400" height="2066925"/></clipPath><image width="256" height="256" xlink:href="data:image/png;base64,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" preserveAspectRatio="none" id="img2"></image></defs><g transform="translate(0 0)"><use width="100%" height="100%" xlink:href="#img2" transform="scale(0.08)"></use></g></svg> -->
+                            <span>Long Jump</span>
+                        </td>
                         <td class="prize-value">₹2,100</td>
                         <td class="prize-value">₹1,100</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                     <tr>
                         <td>Shot Put</td>
                         <td class="prize-value">₹1,100</td>
                         <td class="prize-value">₹500</td>
-                        <td>SANDO</td>
+                        <td>Sando</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <!-- TRACK CATEGORIES GRID -->
+        <div class="categories-grid">
+            <div class="event-card category-senior">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Head -->
+                        <circle cx="50" cy="25" r="12" fill="currentColor"/>
+                        <!-- Body -->
+                        <rect x="40" y="40" width="20" height="25" fill="currentColor"/>
+                        <!-- Left arm -->
+                        <rect x="25" y="42" width="15" height="8" rx="4" fill="currentColor"/>
+                        <!-- Right arm -->
+                        <rect x="60" y="42" width="15" height="8" rx="4" fill="currentColor"/>
+                        <!-- Left leg -->
+                        <rect x="40" y="68" width="6" height="25" rx="3" fill="currentColor"/>
+                        <!-- Right leg -->
+                        <rect x="54" y="68" width="6" height="25" rx="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Senior Category</h3>
+                <div class="category-badge">50+ Years</div>
+                <div class="event-details">
+                    <strong>100M Race</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹1,100</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>Lohi*</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card category-women">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Head -->
+                        <circle cx="50" cy="20" r="10" fill="currentColor"/>
+                        <!-- Hair -->
+                        <ellipse cx="50" cy="12" rx="12" ry="8" fill="currentColor"/>
+                        <!-- Body (dress) -->
+                        <polygon points="50,32 35,45 40,70 60,70 65,45" fill="currentColor"/>
+                        <!-- Left arm -->
+                        <rect x="20" y="38" width="15" height="8" rx="4" fill="currentColor" transform="rotate(-20 27 42)"/>
+                        <!-- Right arm (raised, running motion) -->
+                        <rect x="65" y="35" width="15" height="8" rx="4" fill="currentColor" transform="rotate(45 72 39)"/>
+                        <!-- Left leg (running motion) -->
+                        <rect x="42" y="68" width="6" height="28" rx="3" fill="currentColor" transform="rotate(-30 45 68)"/>
+                        <!-- Right leg (forward) -->
+                        <rect x="52" y="68" width="6" height="28" rx="3" fill="currentColor" transform="rotate(15 55 68)"/>
+                    </svg>
+                </div>
+                <h3>Women’s Race</h3>
+                <div class="category-badge">Women’s Division</div>
+                <div class="event-details">
+                    <strong>100M Race</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹1,100</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>Shawl</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card category-kids">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Head (smaller for child) -->
+                        <circle cx="50" cy="22" r="9" fill="currentColor"/>
+                        <!-- Body -->
+                        <rect x="42" y="33" width="16" height="22" fill="currentColor"/>
+                        <!-- Left arm (raised for running) -->
+                        <rect x="22" y="38" width="12" height="7" rx="3.5" fill="currentColor" transform="rotate(-45 28 41)"/>
+                        <!-- Right arm (down for running) -->
+                        <rect x="66" y="42" width="12" height="7" rx="3.5" fill="currentColor" transform="rotate(30 72 45)"/>
+                        <!-- Left leg (forward) -->
+                        <rect x="42" y="56" width="6" height="28" rx="3" fill="currentColor" transform="rotate(20 45 56)"/>
+                        <!-- Right leg (back) -->
+                        <rect x="52" y="56" width="6" height="28" rx="3" fill="currentColor" transform="rotate(-25 55 56)"/>
+                        <!-- Motion line -->
+                        <line x1="20" y1="50" x2="35" y2="50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Kids Under-10</h3>
+                <div class="category-badge">Children’s Sprint</div>
+                <div class="event-details">
+                    <strong>100M & 400M</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card category-teens">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Head -->
+                        <circle cx="50" cy="24" r="10" fill="currentColor"/>
+                        <!-- Body -->
+                        <rect x="40" y="36" width="20" height="25" fill="currentColor"/>
+                        <!-- Left arm (raised for running) -->
+                        <rect x="18" y="40" width="13" height="7" rx="3.5" fill="currentColor" transform="rotate(-50 24 43)"/>
+                        <!-- Right arm (back for running) -->
+                        <rect x="69" y="48" width="13" height="7" rx="3.5" fill="currentColor" transform="rotate(40 75 51)"/>
+                        <!-- Left leg (forward) -->
+                        <rect x="42" y="63" width="6" height="32" rx="3" fill="currentColor" transform="rotate(25 45 63)"/>
+                        <!-- Right leg (back) -->
+                        <rect x="52" y="63" width="6" height="32" rx="3" fill="currentColor" transform="rotate(-30 55 63)"/>
+                        <!-- Motion lines -->
+                        <line x1="15" y1="48" x2="32" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="55" x2="30" y2="55" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Kids Under-14</h3>
+                <div class="category-badge">Teen Division</div>
+                <div class="event-details">
+                    <strong>100M & 400M</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card category-girls">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Left girl -->
+                        <circle cx="30" cy="18" r="8" fill="currentColor"/>
+                        <rect x="23" y="28" width="14" height="20" fill="currentColor"/>
+                        <rect x="10" y="32" width="10" height="6" rx="3" fill="currentColor"/>
+                        <rect x="36" y="32" width="10" height="6" rx="3" fill="currentColor"/>
+                        <rect x="25" y="50" width="5" height="25" rx="2" fill="currentColor"/>
+                        <rect x="34" y="50" width="5" height="25" rx="2" fill="currentColor"/>
+
+                        <!-- Middle girl (center, taller) -->
+                        <circle cx="50" cy="15" r="9" fill="currentColor"/>
+                        <rect x="41" y="26" width="18" height="24" fill="currentColor"/>
+                        <rect x="25" y="32" width="11" height="7" rx="3" fill="currentColor"/>
+                        <rect x="64" y="32" width="11" height="7" rx="3" fill="currentColor"/>
+                        <rect x="45" y="52" width="6" height="28" rx="2" fill="currentColor"/>
+                        <rect x="55" y="52" width="6" height="28" rx="2" fill="currentColor"/>
+
+                        <!-- Right girl -->
+                        <circle cx="70" cy="20" r="8" fill="currentColor"/>
+                        <rect x="63" y="30" width="14" height="20" fill="currentColor"/>
+                        <rect x="50" y="34" width="10" height="6" rx="3" fill="currentColor"/>
+                        <rect x="76" y="34" width="10" height="6" rx="3" fill="currentColor"/>
+                        <rect x="65" y="52" width="5" height="25" rx="2" fill="currentColor"/>
+                        <rect x="74" y="52" width="5" height="25" rx="2" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Girls Under-14</h3>
+                <div class="category-badge">Girls Division</div>
+                <div class="event-details">
+                    <strong>100M Race</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>T-Shirt</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card category-fun">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Lemon -->
+                        <ellipse cx="50" cy="50" rx="30" ry="35" fill="currentColor"/>
+                        <!-- Highlight -->
+                        <ellipse cx="40" cy="35" rx="10" ry="12" fill="currentColor" opacity="0.7"/>
+                        <!-- Top leaf -->
+                        <ellipse cx="55" cy="15" rx="8" ry="12" fill="currentColor" transform="rotate(-30 55 15)"/>
+                        <!-- Joy lines (smile) -->
+                        <path d="M 35 55 Q 50 65 65 55" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <!-- Fun dots -->
+                        <circle cx="30" cy="40" r="2.5" fill="currentColor"/>
+                        <circle cx="70" cy="42" r="2.5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Lemon Race</h3>
+                <div class="category-badge">Fun Event (Under-10)</div>
+                <div class="event-details">
+                    <strong>Special Format</strong>
+                    <div class="prizes-container">
+                        <span class="prize-badge"><span class="badge-medal">🥇</span>₹500</span>
+                        <span class="prize-badge"><span class="badge-medal">🥈</span>₹250</span>
+                        <span class="prize-badge"><span class="badge-medal">🥉</span>Sando*</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <!-- SPECIAL EVENTS -->
         <div class="section-header" id="special-events">
@@ -1585,7 +1839,20 @@
         <div class="events-grid">
             <div class="event-card">
                 <div class="event-icon">
-                    <i class="ti ti-woman"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Pot (matka) body -->
+                        <path d="M 30 35 Q 20 50 25 70 L 75 70 Q 80 50 70 35 Z" fill="currentColor"/>
+                        <!-- Pot neck -->
+                        <rect x="38" y="25" width="24" height="12" fill="currentColor"/>
+                        <!-- Pot mouth -->
+                        <ellipse cx="50" cy="25" rx="14" ry="5" fill="currentColor"/>
+                        <!-- Water/liquid inside -->
+                        <ellipse cx="50" cy="60" rx="20" ry="8" fill="currentColor" opacity="0.6"/>
+                        <!-- Decorative line -->
+                        <circle cx="50" cy="50" r="3" fill="currentColor"/>
+                        <circle cx="40" cy="55" r="2.5" fill="currentColor"/>
+                        <circle cx="60" cy="55" r="2.5" fill="currentColor"/>
+                    </svg>
                 </div>
                 <h3>Matka Race</h3>
                 <div class="event-details">
@@ -1601,7 +1868,31 @@
 
             <div class="event-card">
                 <div class="event-icon">
-                    <i class="ti ti-users-group"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-icon">
+                        <!-- Left person pulling back -->
+                        <circle cx="20" cy="20" r="7" fill="currentColor"/>
+                        <rect x="14" y="30" width="12" height="18" fill="currentColor"/>
+                        <rect x="5" y="34" width="10" height="6" rx="3" fill="currentColor" transform="rotate(40 10 37)"/>
+                        <rect x="25" y="36" width="10" height="6" rx="3" fill="currentColor" transform="rotate(-30 30 39)"/>
+                        <rect x="16" y="50" width="5" height="22" rx="2" fill="currentColor"/>
+                        <rect x="21" y="50" width="5" height="22" rx="2" fill="currentColor"/>
+
+                        <!-- Rope in middle -->
+                        <line x1="26" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="28" cy="40" r="2" fill="currentColor"/>
+                        <circle cx="38" cy="40" r="2" fill="currentColor"/>
+                        <circle cx="48" cy="40" r="2" fill="currentColor"/>
+                        <circle cx="62" cy="40" r="2" fill="currentColor"/>
+                        <circle cx="72" cy="40" r="2" fill="currentColor"/>
+
+                        <!-- Right person pulling back -->
+                        <circle cx="80" cy="20" r="7" fill="currentColor"/>
+                        <rect x="74" y="30" width="12" height="18" fill="currentColor"/>
+                        <rect x="85" y="34" width="10" height="6" rx="3" fill="currentColor" transform="rotate(-40 90 37)"/>
+                        <rect x="65" y="36" width="10" height="6" rx="3" fill="currentColor" transform="rotate(30 70 39)"/>
+                        <rect x="79" y="50" width="5" height="22" rx="2" fill="currentColor"/>
+                        <rect x="74" y="50" width="5" height="22" rx="2" fill="currentColor"/>
+                    </svg>
                 </div>
                 <h3>Tug of War</h3>
                 <div class="event-details">
@@ -1651,91 +1942,50 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- REGISTRATION DETAILS -->
-        <div class="section-header">
-            <h2>How to Register</h2>
-        </div>
-
-        <div class="table-container" style="background: rgba(212, 175, 55, 0.08);">
-            <h3>📋 Registration Information</h3>
-            <table>
-                <caption>Event Details and Registration Requirements</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Event Category</th>
-                        <th scope="col">Entry Fee</th>
-                        <th scope="col">Players/Team</th>
-                        <th scope="col">Contact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Track & Field Events</strong></td>
-                        <td class="prize-value">Free</td>
-                        <td>Individual</td>
-                        <td><a href="tel:+918882912305">8882912305</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Volleyball Tournament</strong></td>
-                        <td class="prize-value">₹200/team</td>
-                        <td>12-14 players</td>
-                        <td><a href="https://wa.me/918882912305">WhatsApp Link</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tug of War</strong></td>
-                        <td class="prize-value">Team Event</td>
-                        <td>10 players max</td>
-                        <td><a href="tel:+918882912305">8882912305</a></td>
-                    </tr>
-                </tbody>
-            </table>
             <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
-                <strong>Prize Notes:</strong> SANDO = Sandwich/Gift Item | Lohi = Traditional Prize | SHAWL = Fabric Shawl
+                <strong>Prize Notes:</strong> Sando = Sandwich/Gift Item | Lohi = Traditional Prize | SHAWL = Fabric Shawl
             </p>
         </div>
 
-        <!-- PRIZE DISTRIBUTION CHART -->
-        <div class="section-header">
-            <h2>Prize Distribution</h2>
-        </div>
 
-        <div class="chart-container">
-            <h3>Prize Breakdown by Category</h3>
-            <div style="position: relative; height: 350px;">
-                <canvas id="prizeChart" role="img" aria-label="Prize distribution across event categories"></canvas>
-            </div>
-        </div>
 
         <!-- RULES -->
         <div class="section-header" id="rules">
             <h2>Tournament Rules</h2>
         </div>
 
-        <div class="rules-container">
-            <h3>Volleyball Tournament Rules</h3>
-            <ul class="rules-list">
-                <li><strong>Panchayat Unity:</strong> All teams must be from one panchayat only</li>
-                <li><strong>Player Eligibility:</strong> If any player is from a different panchayat, the entire team will be disqualified</li>
-                <li><strong>Ball Specification:</strong> All volleyball games will be played with a leather ball</li>
-                <li><strong>Team Registration:</strong> Register before the specified deadline to ensure participation</li>
-                <li><strong>Fair Play:</strong> All participants must follow sportsmanship principles and respect officials' decisions</li>
-            </ul>
-        </div>
+        <div class="rules-wrapper">
+            <div class="rules-container">
+                <div class="rules-header">
+                    <span class="rules-icon">🏐</span>
+                    <h3>Volleyball Tournament Rules</h3>
+                </div>
+                <ul class="rules-list">
+                    <li><strong>Panchayat Unity:</strong> All teams must be from one panchayat only</li>
+                    <li><strong>Player Eligibility:</strong> If any player is from a different panchayat, the entire team will be disqualified</li>
+                    <li><strong>Ball Specification:</strong> All volleyball games will be played with a leather ball</li>
+                    <li><strong>Team Registration:</strong> Register before the specified deadline to ensure participation</li>
+                    <li><strong>Fair Play:</strong> All participants must follow sportsmanship principles and respect officials' decisions</li>
+                </ul>
+            </div>
 
-        <div class="rules-container">
-            <h3>Track & Field Events Rules</h3>
-            <ul class="rules-list">
-                <li><strong>Age Verification:</strong> Participants must meet the category age requirements</li>
-                <li><strong>Registration:</strong> All events are free for track and field participants</li>
-                <li><strong>Fair Competition:</strong> All races will follow standard athletic guidelines</li>
-                <li><strong>Participation Certificate:</strong> All participants will receive participation certificates</li>
-                <li><strong>Safety First:</strong> Warm-up and safety guidelines must be followed</li>
-            </ul>
+            <div class="rules-container">
+                <div class="rules-header">
+                    <span class="rules-icon">🏃</span>
+                    <h3>Track & Field Events Rules</h3>
+                </div>
+                <ul class="rules-list">
+                    <li><strong>Age Verification:</strong> Participants must meet the category age requirements</li>
+                    <li><strong>Registration:</strong> All events are free for track and field participants</li>
+                    <li><strong>Fair Competition:</strong> All races will follow standard athletic guidelines</li>
+                    <li><strong>Participation Certificate:</strong> All participants will receive participation certificates</li>
+                    <li><strong>Safety First:</strong> Warm-up and safety guidelines must be followed</li>
+                </ul>
+            </div>
         </div>
 
         <!-- CONTACT SECTION -->
-        <div class="contact-section" id="contact">
+        <!-- <div class="contact-section" id="contact">
             <h2>Get In Touch</h2>
             <p>Interested in participating? Contact us today!</p>
             <div class="contact-grid">
@@ -1758,8 +2008,7 @@
                     <div class="contact-value">Yuva Sports Club<br>Mohdinpur</div>
                 </div>
             </div>
-            <a href="https://wa.me/918882912305?text=I%20want%20to%20register%20for%20the%20Mohdinpur%20Tournament" class="cta-button">Register Now on WhatsApp</a>
-        </div>
+        </div> -->
 
         <footer>
             <p>© 2026 Mohdinpur Athletes & Volleyball Tournament | Yuva Sports Club</p>
@@ -1770,6 +2019,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
     <script>
         // Initialize Chart.js
+
         const prizeCtx = document.getElementById('prizeChart').getContext('2d');
         new Chart(prizeCtx, {
             type: 'doughnut',

@@ -1,0 +1,33 @@
+# Infographic Agent Documentation Files
+INFOGRAPHIC-AGENT-README.md
+AGENT-QUICK-START.md
+INFOGRAPHIC-AGENT.md
+INFOGRAPHIC-IMPLEMENTATION.md
+
+# SVG icon files
+long_jump.svg
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
