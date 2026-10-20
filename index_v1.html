@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mohdinpur Athletes Tournament 2026 - Track events, field events, special events and prizes. Join us on November 15th, 2026 from 8:30 AM.">
+    <meta property="og:title" content="Mohdinpur Athletics Tournament 2026">
+    <meta property="og:description"
+        content="Join the biggest sports tournament in Rewari. Track, field and special events. Register now!">
+    <meta property="og:type" content="event">
+    <title>1st Athletics Tournament 2026 - Mohdinpur</title>
+    <link rel="icon" href="images/club_logo.PNG">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@2.44.0/tabler-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* ============ DESIGN TOKENS ============ */
+        :root {
+            --forest-dark: #0f2a21;
+            --forest-base: #1b3a2e;
+            --forest-light: #2f6b55;
+            --gold: #d4af37;
+            --gold-light: #f0d98a;
+            --gold-dark: #8a6d12;
+            --paper: #f5f6f2;
+            --card: #ffffff;
+            --ink: #111915;
+            --ink-soft: #4a5751;
+            --line: rgba(17, 25, 21, 0.08);
+            --silver: #9aa3ad;
+            --bronze: #b87333;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-soft: 0 10px 30px -12px rgba(15, 42, 33, 0.25);
+            --shadow-lift: 0 22px 44px -18px rgba(15, 42, 33, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        a {
+            color: inherit;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* ============ CLUB LOGO (top-left corner) ============ */
+        .corner-logo {
+            position: absolute;
+            top: 14px;
+            left: 20px;
+            z-index: 5;
+            width: 78px;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============ PAGE LOADER ============ */
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            background: radial-gradient(900px 600px at 50% 40%, #2f6b55 0%, transparent 65%),
+                linear-gradient(160deg, var(--forest-dark) 0%, var(--forest-base) 100%);
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-ring {
+            position: relative;
+            width: 360px;
+            height: 360px;
+        }
+
+        /* Each sport sits on the ring at its own angle; the emoji inside bounces */
+        .loader-ring span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transform: rotate(var(--a)) translateY(-150px) rotate(calc(var(--a) * -1));
+        }
+
+        .loader-ring i {
+            position: absolute;
+            left: -28px;
+            top: -28px;
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #111111;
+            box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.45);
+            animation: loader-bounce 1.2s ease-in-out infinite;
+            animation-delay: calc(var(--a-index) * 0.15s);
+        }
+
+        .loader-ring i svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 160px;
+            height: auto;
+            border-radius: 30px;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5);
+            animation: loader-pulse 1.8s ease-in-out infinite;
+        }
+
+        .loader-text {
+            color: var(--gold-light);
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .loader-bar {
+            width: 280px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            animation: loader-slide 1.4s ease-in-out infinite;
+        }
+
+        @keyframes loader-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+
+        @keyframes loader-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        @keyframes loader-slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(260%); }
+        }
+
+        /* Loader scaled down for phones (about 0.72 of desktop size) */
+        @media (max-width: 480px) {
+            .loader {
+                gap: 20px;
+            }
+
+            .loader-ring {
+                width: 260px;
+                height: 260px;
+            }
+
+            .loader-ring span {
+                transform: rotate(var(--a)) translateY(-108px) rotate(calc(var(--a) * -1));
+            }
+
+            .loader-ring i {
+                left: -20px;
+                top: -20px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .loader-ring i svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .loader-logo {
+                width: 116px;
+                border-radius: 22px;
+            }
+
+            .loader-text {
+                font-size: 0.9rem;
+            }
+
+            .loader-bar {
+                width: 200px;
+            }
+        }
+
+        /* ============ FLOATING GLASS NAV ============ */
+        .topnav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 20px;
+            display: none;
+        }
+
+        .topnav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 10px 10px 10px 20px;
+            border-radius: 999px;
+            background: rgba(15, 42, 33, 0.78);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .brand {
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: var(--gold-light);
+        }
+
+        .topnav ul {
+            list-style: none;
+            display: flex;
+            gap: 4px;
+        }
+
+        .topnav a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 8px 14px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 999px;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .topnav a:hover {
+            background: rgba(212, 175, 55, 0.18);
+            color: var(--gold-light);
+        }
+
+        @media (min-width: 769px) {
+            .topnav {
+                display: block;
+            }
+        }
+
+        /* ============ MOBILE MENU ============ */
+        /* Top bar: phones only, slides in once the hero has scrolled away */
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: rgba(15, 42, 33, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-soft);
+            transform: translateY(-110%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-bar.show {
+            transform: translateY(0);
+        }
+
+        .mobile-bar-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px 6px;
+        }
+
+        .mobile-menu-toggle {
+            width: 44px;
+            height: 44px;
+            flex: none;
+            border: none;
+            border-radius: 14px;
+            background: var(--gold);
+            color: var(--forest-dark);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .mobile-jump {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 0 14px 10px;
+            scrollbar-width: none;
+        }
+
+        .mobile-jump::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-jump a {
+            flex: none;
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-jump a:hover,
+        .mobile-jump a:active {
+            background: rgba(212, 175, 55, 0.25);
+            color: var(--gold-light);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 205;
+            background: var(--forest-dark);
+            color: white;
+            border-radius: 28px 28px 0 0;
+            padding: 28px 24px 36px;
+            transform: translateY(105%);
+            visibility: hidden;
+            overscroll-behavior: contain;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.4s;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            visibility: visible;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+        }
+
+        .mobile-menu h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-menu p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bar {
+                display: block;
+            }
+
+            /* Corner logo moves inline beside the eyebrow to save vertical space */
+            .corner-logo {
+                display: none;
+            }
+
+            .hero-top-logo {
+                display: block;
+                flex: none;
+                width: 56px;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.5);
+            }
+
+            .hero-top .eyebrow {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+                min-width: 0;
+            }
+
+            /* Keep section headings clear of the fixed top bar when jumping */
+            html {
+                scroll-padding-top: 124px;
+            }
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -20px;
+            padding: 90px 24px 110px;
+            background: radial-gradient(1200px 600px at 10% -10%, #2f6b55 0%, transparent 60%),
+                radial-gradient(900px 500px at 100% 0%, #8a6d12 0%, transparent 55%),
+                linear-gradient(160deg, var(--forest-dark) 0%, var(--forest-base) 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .hero::before {
+            /* subtle grain for depth */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 22px 22px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Phone-only logo that sits on the same line as the eyebrow */
+        .hero-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Hidden on desktop; the phone rule in the 768px block shows it */
+        @media (min-width: 769px) {
+            .hero-top-logo {
+                display: none;
+            }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        .hero h1 {
+            margin: 22px 0 14px;
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .grad {
+            background: linear-gradient(90deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero .lead {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            opacity: 0.85;
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 34px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 34px;
+        }
+
+        .countdown div {
+            padding: 14px 10px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .countdown strong {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            color: var(--gold-light);
+        }
+
+        .countdown small {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--forest-dark);
+            box-shadow: 0 10px 24px -10px rgba(212, 175, 55, 0.7);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ============ STAT BENTO ============ */
+        .stats {
+            position: relative;
+            z-index: 2;
+            margin-top: -60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            padding: 22px 20px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--line);
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--forest-light), var(--forest-base));
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+        }
+
+        /* Text values (date, place, contact) in the info tiles */
+        .stat-value.stat-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: 0;
+            margin-bottom: 4px;
+        }
+
+        .stat-text a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Icon and bold label share one row; the value sits below */
+        .stat-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .stat-head .stat-icon {
+            flex: none;
+            margin-bottom: 0;
+        }
+
+        .stat-head .stat-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--forest-base);
+        }
+
+        /* ============ SECTIONS ============ */
+        .section {
+            margin-top: 72px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .kicker {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-top: 4px;
+        }
+
+        .section-head p {
+            color: var(--ink-soft);
+            max-width: 420px;
+        }
+
+        /* ============ FEE BANNER ============ */
+        .fee-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 56px;
+        }
+
+        .fee-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 22px;
+            border-radius: var(--radius-md);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .fee-card.paid {
+            background: linear-gradient(135deg, var(--forest-base), var(--forest-light));
+        }
+
+        .fee-card.free {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--forest-dark);
+        }
+
+        .fee-amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .fee-card p {
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        .fee-card small {
+            display: block;
+            opacity: 0.85;
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        /* ============ EVENT CARDS (track / field / special) ============ */
+        .table-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-soft);
+            overflow-x: auto;
+        }
+
+        .table-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-soft);
+            padding: 0 14px 4px;
+            font-weight: 600;
+        }
+
+        tbody td {
+            background: #f7f8f5;
+            padding: 14px;
+            font-size: 0.95rem;
+        }
+
+        tbody td:first-child {
+            border-radius: 14px 0 0 14px;
+            font-weight: 700;
+        }
+
+        tbody td:last-child {
+            border-radius: 0 14px 14px 0;
+        }
+
+        tbody td.prize-value {
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+        }
+
+        .medal-col {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ============ CATEGORY CARDS ============ */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .cat-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px 20px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover lift only where a real hover exists, so taps don't leave cards stuck up */
+        @media (hover: hover) {
+            .cat-card:hover {
+                transform: translateY(-6px);
+                box-shadow: var(--shadow-lift);
+            }
+        }
+
+        .cat-card::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.35), transparent 70%);
+        }
+
+        .cat-emoji {
+            font-size: 2.4rem;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .cat-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .cat-badge {
+            display: inline-block;
+            margin: 6px 0 14px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(47, 107, 85, 0.1);
+            color: var(--forest-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .cat-event {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            margin-bottom: 10px;
+        }
+
+        /* ============ PRIZE CHIPS ============ */
+        .prizes {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .prize {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 12px;
+            background: #f4f6f2;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .medal {
+            width: 26px;
+            height: 26px;
+            flex: none;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            color: var(--ink);
+            font-weight: 800;
+        }
+
+        .medal.g {
+            background: linear-gradient(135deg, #f8e7a0, var(--gold));
+        }
+
+        .medal.s {
+            background: linear-gradient(135deg, #e6e9ed, var(--silver));
+        }
+
+        .medal.b {
+            background: linear-gradient(135deg, #e8b48a, var(--bronze));
+            color: white;
+        }
+
+        .medal.t {
+            background: linear-gradient(135deg, var(--forest-light), var(--forest-base));
+            color: var(--gold-light);
+        }
+
+        /* ============ SPECIAL EVENTS ============ */
+        .special-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .special-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            color: white;
+            box-shadow: var(--shadow-lift);
+            min-height: 260px;
+        }
+
+        .special-card.matka {
+            background: linear-gradient(145deg, #8a6d12, #d4af37 60%, #f0d98a);
+            color: var(--forest-dark);
+        }
+
+        .special-card.tug {
+            background: linear-gradient(145deg, #0f2a21, #2f6b55);
+        }
+
+        .special-card .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+        }
+
+        .special-card.tug .tag {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--gold-light);
+        }
+
+        .special-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .special-card .desc {
+            margin: 6px 0 18px;
+            opacity: 0.9;
+        }
+
+        .special-card .prizes {
+            max-width: 320px;
+        }
+
+        .special-card .prize {
+            background: rgba(255, 255, 255, 0.2);
+            color: inherit;
+        }
+
+        /* Gold medals vanish on the gold card, so give them a dark badge there */
+        .special-card.matka .medal {
+            background: var(--forest-dark);
+            color: var(--gold-light);
+        }
+
+        .special-card.tug .prize {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .special-card .big-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            font-size: 7rem;
+            opacity: 0.14;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* ============ INFOGRAPHIC: HOW IT WORKS ============ */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            position: relative;
+            list-style: none;
+        }
+
+        .step {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 22px 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .step-num {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--forest-base);
+            color: var(--gold-light);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .step h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+        }
+
+        /* ============ RULES ============ */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .rule {
+            display: flex;
+            gap: 14px;
+            padding: 20px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+        }
+
+        .rule-icon {
+            flex: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: rgba(212, 175, 55, 0.18);
+            font-size: 1.2rem;
+        }
+
+        .rule h4 {
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        .rule p {
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            margin-top: 80px;
+            padding: 36px 24px;
+            border-radius: var(--radius-lg);
+            background: var(--forest-dark);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--gold-light);
+        }
+
+        /* ============ SCROLL REVEAL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .category-grid,
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 14px 30px;
+            }
+
+            .hero {
+                margin: 0 -14px;
+                padding: 84px 18px 100px;
+                border-radius: 0 0 28px 28px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: -50px;
+            }
+
+            .fee-banner,
+            .special-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin-top: 56px;
+            }
+
+            /* Tables become stacked cards on phones */
+            table,
+            tbody,
+            tr,
+            td {
+                display: block;
+                width: 100%;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                margin-bottom: 10px;
+                background: #f7f8f5;
+                border-radius: 14px;
+                padding: 6px 0;
+            }
+
+            tbody td {
+                background: none;
+                border-radius: 0 !important;
+                padding: 6px 14px;
+            }
+
+            tbody td[data-label]::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--ink-soft);
+            }
+
+            .table-card {
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .category-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            /* Stats stay 2x2 so the four numbers don't take half a screen */
+            .stat {
+                padding: 16px 14px;
+            }
+
+            .stat-value:not(.stat-text) {
+                font-size: 1.6rem;
+            }
+
+            .countdown {
+                gap: 6px;
+            }
+
+            .countdown div {
+                padding: 12px 4px;
+            }
+
+            .countdown strong {
+                font-size: 1.4rem;
+            }
+
+            .countdown small {
+                font-size: 0.6rem;
+                letter-spacing: 0.04em;
+            }
+
+            .special-card .big-icon {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PAGE LOADER (hidden once the page has loaded) -->
+    <div class="loader" id="loader" role="status" aria-label="Loading tournament page">
+        <div class="loader-ring">
+            <span style="--a: 0deg; --a-index: 0"><i><svg viewBox="0 0 24 24"><circle cx="14" cy="4.5" r="2"/><path d="M11 8l-3 4 3 2-1 5"/><path d="M11 8l4 1 2 3"/><path d="M8 12l-3 1"/><path d="M14 14l3 5"/></svg></i></span>
+            <span style="--a: 45deg; --a-index: 1"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5 4c3 4 3 12 0 16"/><path d="M19 4c-3 4-3 12 0 16"/><path d="M3 12h18"/></svg></i></span>
+            <span style="--a: 90deg; --a-index: 2"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="15" r="6"/><path d="M8 3l2 6h4l2-6"/><path d="M12 12.5v5"/></svg></i></span>
+            <span style="--a: 135deg; --a-index: 3"><i><svg viewBox="0 0 24 24"><path d="M2 12h20"/><rect x="4" y="7" width="3" height="10" rx="1"/><rect x="17" y="7" width="3" height="10" rx="1"/></svg></i></span>
+            <span style="--a: 180deg; --a-index: 4"><i><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4"/><path d="M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4"/><path d="M9 17h6"/><path d="M8 20h8"/></svg></i></span>
+            <span style="--a: 225deg; --a-index: 5"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8.5l3.2 2.3-1.2 3.7h-4l-1.2-3.7z"/><path d="M12 3v5.5M20.6 9.3l-5-.6M17.2 19l-2.5-3.7M6.8 19l2.5-3.7M3.4 9.3l5-.6"/></svg></i></span>
+            <span style="--a: 270deg; --a-index: 6"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7 4.5c2.5 3 2.5 12 0 15"/><path d="M17 4.5c-2.5 3-2.5 12 0 15"/></svg></i></span>
+            <span style="--a: 315deg; --a-index: 7"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 12c3-3 5-3 8.5 0s5.5 3 8.5 0"/></svg></i></span>
+            <img class="loader-logo" src="images/club_logo.PNG" alt="Yuva Sports Club Mohdinpur logo">
+        </div>
+        <div class="loader-text">Warming up the track…</div>
+        <div class="loader-bar"></div>
+    </div>
+    <!-- MOBILE MENU TOGGLE BUTTON -->
+    <!-- MOBILE TOP BAR (phones only, appears after scrolling past the hero) -->
+    <div class="mobile-bar">
+        <div class="mobile-bar-row">
+            <a class="brand" href="#top">🏆 Mohdinpur <span>2026</span></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" title="Open Navigation Menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+        </div>
+        <nav class="mobile-jump" aria-label="Jump to section">
+            <a href="#track-events">🏃 Track</a>
+            <a href="#field-events">🏅 Field</a>
+            <a href="#categories">👥 Categories</a>
+            <a href="#special-events">🎉 Special</a>
+            <a href="#rules">📋 Rules</a>
+        </nav>
+    </div>
+
+    <!-- MOBILE BOTTOM SHEET MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <h3>🏆 Tournament Menu</h3>
+        <p>Quick navigation</p>
+        <ul>
+            <li><a href="#track-events" onclick="toggleMobileMenu()">🏃 Track Events</a></li>
+            <li><a href="#field-events" onclick="toggleMobileMenu()">🏅 Field Events</a></li>
+            <li><a href="#special-events" onclick="toggleMobileMenu()">🎉 Special Events</a></li>
+            <li><a href="#rules" onclick="toggleMobileMenu()">📋 Rules</a></li>
+        </ul>
+    </div>
+
+    <!-- FLOATING GLASS NAV (Desktop) -->
+    <nav class="topnav" aria-label="Main">
+        <div class="topnav-inner">
+            <a class="brand" href="#top">🏆 Mohdinpur <span>2026</span></a>
+            <ul>
+                <li><a href="#track-events">Track</a></li>
+                <li><a href="#field-events">Field</a></li>
+                <li><a href="#special-events">Special</a></li>
+                <li><a href="#rules">Rules</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" id="top">
+        <img src="images/club_logo.PNG" alt="Yuva Sports Club Mohdinpur logo" class="corner-logo">
+
+        <!-- HERO -->
+        <header class="hero">
+            <div class="hero-inner">
+                <div class="hero-top">
+                    <img src="images/club_logo.PNG" alt="Yuva Sports Club Mohdinpur logo" class="hero-top-logo">
+                    <span class="eyebrow">🏅 Athletics Tournament · Season 2026</span>
+                </div>
+                <h1>1st Athletics Tournament <span class="grad">2026</span><br>Mohdinpur</h1>
+                <p class="lead">Sprint, distance, jumping, throwing and special events for every age group. Run for the
+                    medal, the prize and the bragging rights.</p>
+
+                <div class="countdown" id="countdown" aria-live="polite">
+                    <div><strong id="cd-days">--</strong><small>Days</small></div>
+                    <div><strong id="cd-hours">--</strong><small>Hours</small></div>
+                    <div><strong id="cd-mins">--</strong><small>Minutes</small></div>
+                    <div><strong id="cd-secs">--</strong><small>Seconds</small></div>
+                </div>
+
+                <div class="chips">
+                    <span class="chip">📅 November 15th, 2026</span>
+                    <span class="chip">⏲️ 8:30 AM onwards</span>
+                    <span class="chip">📍 Mohdinpur, Rewari</span>
+                </div>
+
+                <div class="btn-row">
+                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScODarWq8sFsNSwO7fzDqRnYe7h_rFRUMGOb3G_OkAubJWtaw/viewform?usp=preview" target="_blank" rel="noopener"><i class="ti ti-pencil"></i> Register now</a>
+                    <a class="btn btn-ghost" href="#track-events"><i class="ti ti-run"></i> Explore Events</a>
+                    <a class="btn btn-ghost" href="#rules"><i class="ti ti-list-check"></i> Read Rules</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- EVENT INFO -->
+        <section class="stats reveal" aria-label="Event information">
+            <div class="stat">
+                <div class="stat-head">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-label">Event Date</div>
+                </div>
+                <div class="stat-value stat-text">November 15th, 2026 - 8:30 AM onwards</div>
+            </div>
+            <div class="stat">
+                <div class="stat-head">
+                    <div class="stat-icon">📍</div>
+                    <div class="stat-label">Location</div>
+                </div>
+                <div class="stat-value stat-text">Mohdinpur, Rewari</div>
+            </div>
+            <div class="stat">
+                <div class="stat-head">
+                    <div class="stat-icon">📞</div>
+                    <div class="stat-label">Contact</div>
+                </div>
+                <div class="stat-value stat-text"><a href="tel:+918882912305">+91 8882912305 / 9817526751</a></div>
+            </div>
+            <div class="stat">
+                <div class="stat-head">
+                    <div class="stat-icon">🤵</div>
+                    <div class="stat-label">Organizer</div>
+                </div>
+                <div class="stat-value stat-text">Yuva Sports Club</div>
+            </div>
+        </section>
+
+        <!-- ENTRY FEES -->
+        <section class="fee-banner reveal" role="region" aria-label="Entry fees">
+            <div class="fee-card paid">
+                <div class="fee-amount">₹50</div>
+                <p><strong>Entry fee</strong><br>Track &amp; Field Events and Tug of War
+                    <small>Per event entry</small>
+                </p>
+            </div>
+            <div class="fee-card free">
+                <div class="fee-amount">FREE</div>
+                <p><strong>No entry fee</strong><br>Girls, Kids, Senior category &amp; Matka Race
+                    <small>Open to all in these categories</small>
+                </p>
+            </div>
+        </section>
+
+        <!-- TRACK EVENTS -->
+        <section class="section" id="track-events">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">Section 01</div>
+                    <h2>Track Events</h2>
+                </div>
+                <p>Open category sprint and distance races. Top three finishers take home medals, cash and a sando.</p>
+            </div>
+
+            <div class="table-card reveal">
+                <h3>🏃 Open Category · Sprint &amp; Distance Races</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Event</th>
+                            <th scope="col">🥇 1st Place</th>
+                            <th scope="col">🥈 2nd Place</th>
+                            <th scope="col">🥉 3rd Place</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100M Race</td>
+                            <td class="prize-value" data-label="🥇 1st">₹1,500 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                        <tr>
+                            <td>400M Race</td>
+                            <td class="prize-value" data-label="🥇 1st">₹1,500 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                        <tr>
+                            <td>1,600M Race</td>
+                            <td class="prize-value" data-label="🥇 1st">₹2,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FIELD EVENTS -->
+        <section class="section" id="field-events">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">Section 02</div>
+                    <h2>Field Events</h2>
+                </div>
+                <p>Jumping and throwing competitions, with the same three-place prize structure as track events.</p>
+            </div>
+
+            <div class="table-card reveal">
+                <h3>🏅 Jumping &amp; Throwing Competitions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Event</th>
+                            <th scope="col">🥇 1st Place</th>
+                            <th scope="col">🥈 2nd Place</th>
+                            <th scope="col">🥉 3rd Place</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>High Jump</td>
+                            <td class="prize-value" data-label="🥇 1st">₹1,500 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                        <tr>
+                            <td>Long Jump</td>
+                            <td class="prize-value" data-label="🥇 1st">₹1,500 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                        <tr>
+                            <td>Shot Put</td>
+                            <td class="prize-value" data-label="🥇 1st">₹1,500 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥈 2nd">₹1,100 + Medal + Sando</td>
+                            <td class="prize-value" data-label="🥉 3rd">₹500 + Medal + Sando</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AGE CATEGORIES -->
+        <section class="section" id="categories">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">Section 03</div>
+                    <h2>Categories &amp; 100M Race</h2>
+                </div>
+                <p>Separate podiums for every age group, so every athlete has a real shot at a medal.</p>
+            </div>
+
+            <div class="category-grid">
+                <article class="cat-card reveal">
+                    <div class="cat-emoji">👧</div>
+                    <h3>Girls Open</h3>
+                    <span class="cat-badge">Girls Division</span>
+                    <div class="cat-event">100M Race</div>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal g">1</span>₹1,500 + Medal + T-shirt</div>
+                        <div class="prize"><span class="medal s">2</span>₹1,100 + Medal + T-shirt</div>
+                        <div class="prize"><span class="medal b">3</span>₹500 + Medal + T-shirt</div>
+                    </div>
+                </article>
+
+                <article class="cat-card reveal">
+                    <div class="cat-emoji">🧒</div>
+                    <h3>Boys Under-14</h3>
+                    <span class="cat-badge">Teen Division</span>
+                    <div class="cat-event">100M Race</div>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal g">1</span>₹750 + Medal + Sando</div>
+                        <div class="prize"><span class="medal s">2</span>₹500 + Medal + Sando</div>
+                        <div class="prize"><span class="medal b">3</span>₹250 + Medal + Sando</div>
+                    </div>
+                </article>
+
+                <article class="cat-card reveal">
+                    <div class="cat-emoji">👧</div>
+                    <h3>Girls Under-14</h3>
+                    <span class="cat-badge">Teen Division</span>
+                    <div class="cat-event">100M Race</div>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal g">1</span>₹750 + Medal + T-shirt</div>
+                        <div class="prize"><span class="medal s">2</span>₹500 + Medal + T-shirt</div>
+                        <div class="prize"><span class="medal b">3</span>₹250 + Medal + T-shirt</div>
+                    </div>
+                </article>
+
+                <article class="cat-card reveal">
+                    <div class="cat-emoji">🧓</div>
+                    <h3>Senior Category</h3>
+                    <span class="cat-badge">50+ Years</span>
+                    <div class="cat-event">100M Race</div>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal g">1</span>₹1,500</div>
+                        <div class="prize"><span class="medal s">2</span>₹1,100</div>
+                        <div class="prize"><span class="medal b">3</span>₹500</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SPECIAL EVENTS -->
+        <section class="section" id="special-events">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">Section 04</div>
+                    <h2>Special Events</h2>
+                </div>
+                <p>Special events with their own podiums. Entry is free for the Matka Race.</p>
+            </div>
+
+            <div class="special-grid">
+                <article class="special-card matka reveal">
+                    <span class="tag">Ladies Special · Free Entry</span>
+                    <h3>Matka Race</h3>
+                    <p class="desc">A ladies special event with its own three-place podium.</p>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal g">1</span>₹1,500</div>
+                        <div class="prize"><span class="medal s">2</span>₹1,100</div>
+                        <div class="prize"><span class="medal b">3</span>₹500</div>
+                    </div>
+                    <span class="big-icon">🏺</span>
+                </article>
+
+                <article class="special-card tug reveal">
+                    <span class="tag">Team Event · Max 10 · ₹50 Entry</span>
+                    <h3>Tug of War</h3>
+                    <p class="desc">Championship format. Pull together, win together.</p>
+                    <div class="prizes">
+                        <div class="prize"><span class="medal t">🏆</span>Champions · ₹1,500</div>
+                    </div>
+                    <span class="big-icon">🪢</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- INFOGRAPHIC: HOW IT WORKS -->
+        <section class="section" id="how-it-works">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">At a glance</div>
+                    <h2>How the day works</h2>
+                </div>
+                <p>Four steps from the start line to the podium.</p>
+            </div>
+
+            <ol class="steps">
+                <li class="step reveal">
+                    <div class="step-num">1</div>
+                    <h4>Pick your events</h4>
+                    <p>Track, field and special events, each with its own age category.</p>
+                </li>
+                <li class="step reveal">
+                    <div class="step-num">2</div>
+                    <h4>Check the fee</h4>
+                    <p>₹50 for Track &amp; Field and Tug of War. Free for girls, kids, seniors and Matka Race.</p>
+                </li>
+                <li class="step reveal">
+                    <div class="step-num">3</div>
+                    <h4>Compete on the day</h4>
+                    <p>Event day starts at 8:30 AM on 15 November 2026 in Mohdinpur, Rewari.</p>
+                </li>
+                <li class="step reveal">
+                    <div class="step-num">4</div>
+                    <h4>Take home the prize</h4>
+                    <p>Medals and prize money for the top three</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- RULES -->
+        <section class="section" id="rules">
+            <div class="section-head reveal">
+                <div>
+                    <div class="kicker">Before you run</div>
+                    <h2>Tournament Rules</h2>
+                </div>
+                <p>Please read these before the event day.</p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule reveal">
+                    <div class="rule-icon">🎂</div>
+                    <div>
+                        <h4>Age Verification</h4>
+                        <p>Participants must meet the category age requirements.</p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">📝</div>
+                    <div>
+                        <h4>Registration</h4>
+                        <p>₹50 entry fee per event for Track &amp; Field and Tug of War. Free for Girls, Kids, Senior category and Matka Race.</p>
+                        <p style="margin-top: 8px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLScODarWq8sFsNSwO7fzDqRnYe7h_rFRUMGOb3G_OkAubJWtaw/viewform?usp=preview" target="_blank" rel="noopener" style="font-weight: 700; color: var(--forest-light);">Register online →</a></p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">⏰</div>
+                    <div>
+                        <h4>Punctuality</h4>
+                        <p>Please reach the venue on time so that all events can be managed properly and run as scheduled.</p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">⚖️</div>
+                    <div>
+                        <h4>Fair Competition</h4>
+                        <p>All races will follow standard athletic guidelines.</p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">🥇</div>
+                    <div>
+                        <h4>Medals</h4>
+                        <p>Medals are awarded to the top three finishers in every event.</p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">🎤</div>
+                    <div>
+                        <h4>Prize Distribution</h4>
+                        <p>All prizes will be distributed at the end of the events by the Chief Guest.</p>
+                    </div>
+                </div>
+                <div class="rule reveal">
+                    <div class="rule-icon">🦵</div>
+                    <div>
+                        <h4>Safety First</h4>
+                        <p>Warm-up and safety guidelines must be followed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 <strong>Mohdinpur Athletics Tournament</strong> · Yuva Sports Club</p>
+            <p>Bringing the community together through sports</p>
+        </footer>
+    </div>
+
+    <script>
+        // ---------- Countdown to event start (8:30 AM IST, 15 Nov 2026) ----------
+        const eventStart = new Date('2026-11-15T08:30:00+05:30').getTime();
+        const pad = n => String(n).padStart(2, '0');
+
+        function updateCountdown() {
+            const diff = Math.max(0, eventStart - Date.now());
+            document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('cd-hours').textContent = pad(Math.floor(diff / 3600000) % 24);
+            document.getElementById('cd-mins').textContent = pad(Math.floor(diff / 60000) % 60);
+            document.getElementById('cd-secs').textContent = pad(Math.floor(diff / 1000) % 60);
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ---------- Reveal on scroll + count-up + bar fill ----------
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function countUp(el) {
+            const target = Number(el.dataset.count);
+            if (reduceMotion) { el.textContent = target.toLocaleString('en-IN'); return; }
+            const start = performance.now();
+            const dur = 1400;
+            (function tick(now) {
+                const p = Math.min(1, (now - start) / dur);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased).toLocaleString('en-IN');
+                if (p < 1) requestAnimationFrame(tick);
+            })(start);
+        }
+
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                el.classList.add('in');
+                el.querySelectorAll('[data-count]').forEach(countUp);
+                io.unobserve(el);
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // ---------- PDF export (unchanged behaviour) ----------
+        function exportToPDF() {
+            const element = document.querySelector('.container');
+            const opt = {
+                margin: 10,
+                filename: 'Mohdinpur-Tournament-2026.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4', compress: true },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Keyboard shortcut: Ctrl+Alt+P to export PDF
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.altKey && e.key === 'p') {
+                e.preventDefault();
+                exportToPDF();
+            }
+        });
+
+        // ---------- Mobile menu ----------
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const open = mobileMenu.classList.toggle('active');
+            mobileToggle.textContent = open ? '✕' : '☰';
+            mobileToggle.setAttribute('aria-expanded', String(open));
+            document.body.style.overflow = open ? 'hidden' : 'auto';
+        }
+
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            if (!mobileMenu.contains(event.target) && !mobileToggle.contains(event.target)
+                && mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.getElementById('mobileMenu').classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // ---------- Mobile top bar: show once the hero has scrolled away ----------
+        const mobileBar = document.querySelector('.mobile-bar');
+        window.addEventListener('scroll', () => {
+            mobileBar.classList.toggle('show', window.scrollY > 260);
+        }, { passive: true });
+
+        // ---------- Page loader: hide after load, with a minimum display time ----------
+        const loader = document.getElementById('loader');
+        const loaderStart = performance.now();
+        const LOADER_MIN_MS = 1800;
+        let loaderDone = false;
+
+        function hideLoader() {
+            if (loaderDone) return;
+            loaderDone = true;
+            const wait = Math.max(0, LOADER_MIN_MS - (performance.now() - loaderStart));
+            setTimeout(() => {
+                loader.classList.add('hide');
+                loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+            }, wait);
+        }
+
+        window.addEventListener('load', hideLoader);
+        setTimeout(hideLoader, 6000); // fallback so the loader can never get stuck
+    </script>
+</body>
+
+</html>
